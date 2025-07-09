@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Group Chat - <%= username %></title>
+  <link rel="stylesheet" href="/chat.css">
+</head>
+<body>
+  <header>
+    <h2>💬 SOK Group Chat</h2>
+    <a href="/dashboard" class="btn">⬅️ Back to Dashboard</a>
+  </header>
+
+  <main>
+    <section id="chat-box" aria-label="Chat messages"></section>
+
+    <form id="chat-form" autocomplete="off">
+      <input type="text" id="message-input" placeholder="Type a message..." required aria-label="Message input" />
+      <button type="submit" aria-label="Send message">Send</button>
+    </form>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('message-input');
+    const chatBox = document.getElementById('chat-box');
+
+    // Submit message
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const message = input.value.trim();
+      if (message) {
+        socket.emit("chat message", {
+          user: "<%= username %>",
+          message: message
+        });
+        input.value = '';
+      }
+    });
+
+    // Display message
+    socket.on("chat message", ({ user, message, timestamp }) => {
+      const div = document.createElement('div');
+      const time = new Date(timestamp).toLocaleString(); // 🕒 date + time
+      div.classList.add('chat-message');
+      div.innerHTML = `<strong>${user}</strong> <span class="timestamp">[${time}]</span>: ${message}`;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    });
+
+    // Load past messages
+    socket.on("load messages", (messages) => {
+      messages.forEach(({ user, message, timestamp }) => {
+        const div = document.createElement('div');
+        const time = new Date(timestamp).toLocaleString();
+        div.classList.add('chat-message');
+        div.innerHTML = `<strong>${user}</strong> <span class="timestamp">[${time}]</span>: ${message}`;
+        chatBox.appendChild(div);
+      });
+      chatBox.scrollTop = chatBox.scrollHeight;
+    });
+  </script>
+</body>
+</html>

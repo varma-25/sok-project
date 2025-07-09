@@ -1,0 +1,88 @@
+/* Header */
+header {
+  background-color: #1a2332;
+  color: white;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* ✅ Responsive */
+}
+
+.welcome-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap; /* ✅ Allow buttons to wrap on smaller screens */
+}
+
+.join-gc-btn,
+.logout-btn {
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  color: white;
+  white-space: nowrap; /* ✅ Prevent overflow */
+}
+
+.join-gc-btn {
+  background-color: #0d6efd;
+}
+.join-gc-btn:hover {
+  background-color: #084298;
+}
+
+.logout-btn {
+  background-color: #dc3545;
+}
+.logout-btn:hover {
+  background-color: #a71d2a;
+}
+
+/* Centered Dashboard Message */
+.dashboard {
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard h2 {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+/* 📱 Mobile Optimization */
+@media screen and (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard {
+    padding: 40px 10px;
+  }
+
+  .dashboard h2 {
+    font-size: 1.25rem;
+    padding: 20px;
+  }
+
+  .header-buttons {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}

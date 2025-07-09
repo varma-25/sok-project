@@ -1,0 +1,125 @@
+/* General */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  background-color: #1a2332;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+header .btn {
+  background-color: #0d6efd;
+  color: white;
+  padding: 8px 14px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+header .btn:hover {
+  background-color: #084298;
+}
+
+/* Main chat area */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Chat box */
+#chat-box {
+  flex: 1;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
+  max-height: 70vh;
+  margin-bottom: 1rem;
+}
+
+.chat-message {
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.chat-message strong {
+  color: #0d6efd;
+}
+
+.timestamp {
+  color: #777;
+  font-size: 0.85rem;
+  margin-left: 6px;
+}
+
+/* Chat form */
+#chat-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#message-input {
+  flex: 1;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  min-width: 0;
+}
+
+#chat-form button {
+  padding: 10px 16px;
+  font-size: 1rem;
+  background-color: #198754;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#chat-form button:hover {
+  background-color: #146c43;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 600px) {
+  main {
+    padding: 1rem;
+  }
+
+  #chat-form {
+    flex-direction: column;
+  }
+
+  #chat-form button {
+    width: 100%;
+  }
+}

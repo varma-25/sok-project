@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard - Welcome <%= username %></title>
+  <link rel="stylesheet" href="/dash.css" />
+</head>
+<body>
+  <header class="dashboard-header">
+    <h2>📘 Welcome, <%= username %>!</h2>
+    <div class="dashboard-buttons">
+      <a href="/group-chat" class="btn">Join GC</a>
+      <a href="/logout" class="btn logout">Logout</a>
+    </div>
+  </header>
+
+  <section class="branch-box">
+    <h3>📁 Select Your Branch</h3>
+    <div class="branches-grid">
+      <a href="/branch/cse" class="branch-card">CSE</a>
+      <a href="/branch/csit" class="branch-card">CS & IT</a>
+      <a href="/branch/ece" class="branch-card">ECE</a>
+      <a href="/branch/aids" class="branch-card">AI & DS</a>
+      <a href="/branch/eee" class="branch-card">EEE</a>
+      <a href="/branch/mech" class="branch-card">Mechanical</a>
+    </div>
+  </section>
+
+  <% if (username === "Qwerty") { %>
+    <section class="admin-box">
+      <h3>🛡️ Admin Panel - Registered Users</h3>
+      <ul class="user-list">
+        <% usersList.forEach(user => { %>
+          <li>
+            👤 <%= user.name %>
+            <% if (user.name === "Qwerty") { %>
+              <span class="admin-tag">[Admin]</span>
+            <% } %>
+          </li>
+        <% }) %>
+      </ul>
+    </section>
+  <% } %>
+
+</body>
+</html>
